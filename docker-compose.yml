@@ -47,9 +47,7 @@ services:
 
   ertelapiaction:
     container_name: ertelapiaction_container
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: denisfilichev/ertelapiaction:latest
     volumes:
       - /c/example_volumes:/app/sert
       - /c/example_volumes/conf:/app/conf
