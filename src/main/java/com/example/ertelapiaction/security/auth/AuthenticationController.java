@@ -19,9 +19,7 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody @Valid RegisterRequest request
     ) {
-        System.out.println(request);
         AuthenticationResponse response = service.register(request);
-        System.out.println(response);
         return ResponseEntity.ok(response);
     }
 
@@ -29,9 +27,7 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest request
     ){
-        System.out.println(request);
         AuthenticationResponse response = service.authenticate(request);
-        System.out.println(response);
         return ResponseEntity.ok(response);
     }
 }

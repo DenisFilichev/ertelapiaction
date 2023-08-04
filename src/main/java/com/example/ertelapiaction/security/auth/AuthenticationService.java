@@ -29,7 +29,7 @@ public class AuthenticationService {
                 .isAccountNonLocked(false)
                 .build();
         repository.save(user);
-        var jwtToken = jwtService.generateToken(user);
+        //var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token("Verification is required to receive a token. Contact your administrator.")
                 .build();

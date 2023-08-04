@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/actions")
+@RequestMapping({"/api/v1/actions", "/rest/v1/accesscontrols"})
 public class ActionController {
 
     private final ActionService actionService;
@@ -35,9 +35,8 @@ public class ActionController {
                             content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
             }
     )
-    @PostMapping(value = "/opendoor/{ip}")
+    @PostMapping(value = {"/opendoor/{ip}", "/{ip}/actions"})
     public ResponseEntity<ActionMessage> openDoor(@PathVariable String ip){
-        System.out.println("/api/v1/actions/opendoor/" + ip);
         actionService.parseAction(new ActionModel(ip, ActionsEnum.OPEN_DOOR));
         return ResponseEntity.ok(
                 ActionMessage.builder()
