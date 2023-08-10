@@ -36,7 +36,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         final String jwt;
         final String userEmail;
         if(authHeader == null || !authHeader.startsWith("Bearer ")){
-            restAuthenticationEntryPoint.commence(request, response, new AppAuthenticationException("UNAUTHORIZED"));
+            filterChain.doFilter(request, response);
             return;
         }
         jwt = authHeader.substring(7);
